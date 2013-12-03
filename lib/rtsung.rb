@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'builder'
 
 require 'rtsung/client'
@@ -16,7 +15,7 @@ class RTsung
   def initialize(options = {}, &block)
     @log_level = options[:log_level] || LOG_LEVEL
     @dump_traffic = options[:dump_traffic] || DUMP_TRAFFIC
-    
+
     @clients, @servers = [], []
     @phases, @options = [], []
     @sessions = []
@@ -61,7 +60,7 @@ class RTsung
   def to_xml
     output = ''
 
-    xml = Builder::XmlMarkup.new(:target => output, :indent => 2)
+    xml = ::Builder::XmlMarkup.new(:target => output, :indent => 2)
 
     xml.instruct!
     xml.declare! :DOCTYPE, :tsung, :SYSTEM, TSUNG_DTD, :'[]'
